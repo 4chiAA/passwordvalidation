@@ -47,18 +47,11 @@ public class PasswordValidation {
     // @param password
     // @return boolean true, wenn das Passwort nicht ein übliches Passwort ist
     public static boolean noCommonPassword(String password) {
-        if (Objects.equals(password, "Aa345678")) {
-            return false;
-        } else if (Objects.equals(password, "Password123")) {
-            return false;
-        } else if (Objects.equals(password, "12345678")) {
-            return false;
-        } else if (Objects.equals(password, "Password1")) {
-            return false;
-        } else if (Objects.equals(password, "12Password")) {
-            return false;
-        } else if (Objects.equals(password, "MyPassword")) {
-            return false;
+        String[] commonPassword = {"Aa345678", "Password123", "12345678", "Password1", "12Password", "MyPassword"};
+        for (String i:commonPassword){
+            if (password.contains(i)){
+                return false;
+            }
         }
         return true;
     }
@@ -77,7 +70,7 @@ public class PasswordValidation {
 
         return res;
     }
-
 }
+
 
 
