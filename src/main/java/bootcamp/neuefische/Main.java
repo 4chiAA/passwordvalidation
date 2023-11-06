@@ -1,10 +1,26 @@
 package bootcamp.neuefische;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        //Generiert ein zufälliges Passwort
+        String randomPassword = RandomPassword.getRandomPassword(8);
+
+        //Solange eine Methode false ausgibt, also die Vorgabe nicht erfüllt ist,
+        // wird für randomPassword ein neues Passswort kriert und erneut getestet
+        while (!PasswordValidation.passwordGreater7(randomPassword)
+                || !PasswordValidation.containNumbers(randomPassword)
+                || !PasswordValidation.lowerAndUpperCaseLetters(randomPassword)
+                || !PasswordValidation.noCommonPassword(randomPassword)
+                || !PasswordValidation.specialCharacter(randomPassword)){
+            randomPassword = RandomPassword.getRandomPassword(8);
+        }
+        System.out.println(randomPassword);
+
+
+        //Eingabe und Überprüfung eines Passworts
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter your password:");
         String password = input.nextLine();
@@ -22,5 +38,8 @@ public class Main {
         } else {
             System.out.println("Your password was created successfully!");
         }
+
+
+
     }
 }
