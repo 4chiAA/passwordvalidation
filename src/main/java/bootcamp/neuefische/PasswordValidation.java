@@ -6,17 +6,20 @@ public class PasswordValidation {
     // @param password
     // @return boolean true, wenn das Passwort mindestens 8 Zeichen hat
     public static boolean passwordGreater7(String password) {
-        if(password.length()>7){
-            return true;
-        }
-        return false;
+        return password.length() > 7;
     }
-
 
     // Methode containNumbers prüft, ob das Passwort Ziffern enthält.
     // @param password
-    // @return boolean true, wenn das Passwort mindestens 1 Ziffer enthält
-
+    // @return boolean true, wenn das Passwort mindestens 1 Ziffer
+    public static boolean containNumbers(String password) {
+        for (int i = 0; i < password.length(); i++){
+            if(Character.isDigit(password.charAt(i))){
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Methode lowerAndUpperCaseLetters stellt sicher, dass Groß- und auch Kleinbuchstaben verwendet werden.
     // @param password
