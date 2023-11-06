@@ -76,6 +76,46 @@ class PasswordValidationTest {
         assertTrue(actual);
     }
 
+    @Test
+    void noCommonPassword_whenPasswordIsCommon_thenReturnFalse() {
+        // GIVEN
+        String password = "Password123";
+        // WHEN
+        boolean actual = PasswordValidation.noCommonPassword(password);
+        // THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void noCommonPassword_whenPasswordIsNotCommon_thenReturnTrue() {
+        // GIVEN
+        String password = "f34gd5435wef";
+        // WHEN
+        boolean actual = PasswordValidation.noCommonPassword(password);
+        // THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void specialCharacter_whenPasswordContains$_thenReturnTrue() {
+        // GIVEN
+        String password = "dfgre$gsgfg";
+        // WHEN
+        boolean actual = PasswordValidation.specialCharacter(password);
+        // THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void specialCharacter_whenPasswordContainsNoSpecialCharacter_thenReturnFalse() {
+        // GIVEN
+        String password = "dfgre456gsgfg";
+        // WHEN
+        boolean actual = PasswordValidation.specialCharacter(password);
+        // THEN
+        assertFalse(actual);
+    }
+
 
 
 

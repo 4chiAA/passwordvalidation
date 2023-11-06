@@ -1,5 +1,9 @@
 package bootcamp.neuefische;
 
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PasswordValidation {
 
     // Methode passwordGreater7 stellt sicher, dass das Passwort mindestens 8 Zeichen lang ist.
@@ -38,9 +42,42 @@ public class PasswordValidation {
         return lowerCase && upperCase;
     }
 
-    // Methode badPassword prüft, ob das Passwort zu üblich und zu einfach ist.
+
+    // Methode noCommonPassword prüft, ob das Passwort zu üblich und zu einfach ist.
     // @param password
     // @return boolean true, wenn das Passwort nicht ein übliches Passwort ist
+    public static boolean noCommonPassword(String password) {
+        if (Objects.equals(password, "Aa345678")) {
+            return false;
+        } else if (Objects.equals(password, "Password123")) {
+            return false;
+        } else if (Objects.equals(password, "12345678")) {
+            return false;
+        } else if (Objects.equals(password, "Password1")) {
+            return false;
+        } else if (Objects.equals(password, "12Password")) {
+            return false;
+        } else if (Objects.equals(password, "MyPassword")) {
+            return false;
+        }
+        return true;
+    }
 
+
+    // Methode specialCharacter prüft, ob das Passwort zu üblich und zu einfach ist.
+    // @param password
+    // @return boolean true, wenn das Passwort nicht ein übliches Passwort ist
+    public static boolean specialCharacter(String password) {
+        // Creating regex pattern by creating object of Pattern class
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        // Creating matcher for above pattern on our string
+        Matcher m = p.matcher(password);
+        // Now finding the matches imposing find() method
+        boolean res = m.find();
+
+        return res;
+    }
 
 }
+
+
