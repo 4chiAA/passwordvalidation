@@ -46,5 +46,37 @@ class PasswordValidationTest {
         assertFalse(actual);
     }
 
+    @Test
+    void lowerAndUpperCaseLetters_whenPasswordIsAllLowerCase_thenReturnFalse() {
+        // GIVEN
+        String password = "sjriuggufgrd";
+        // WHEN
+        boolean actual = PasswordValidation.lowerAndUpperCaseLetters(password);
+        // THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void lowerAndUpperCaseLetters_whenPasswordIsAllUpperCase_thenReturnFalse() {
+        // GIVEN
+        String password = "JSHDZFGDJSDKH";
+        // WHEN
+        boolean actual = PasswordValidation.lowerAndUpperCaseLetters(password);
+        // THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void lowerAndUpperCaseLetters_whenPasswordHasBoth_thenReturnTrue() {
+        // GIVEN
+        String password = "sjriuSDggSDWgrd";
+        // WHEN
+        boolean actual = PasswordValidation.lowerAndUpperCaseLetters(password);
+        // THEN
+        assertTrue(actual);
+    }
+
+
+
 
 }
