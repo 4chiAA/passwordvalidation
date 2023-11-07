@@ -10,11 +10,7 @@ public class Main {
 
         //Solange eine Methode false ausgibt, also die Vorgabe nicht erfüllt ist,
         // wird für randomPassword ein neues Passswort kriert und erneut getestet
-        while (!PasswordValidation.passwordGreater7(randomPassword)
-                || !PasswordValidation.containNumbers(randomPassword)
-                || !PasswordValidation.lowerAndUpperCaseLetters(randomPassword)
-                || !PasswordValidation.noCommonPassword(randomPassword)
-                || !PasswordValidation.specialCharacter(randomPassword)){
+        while (!PasswordValidation.isSafe(randomPassword)) {
             randomPassword = RandomPassword.getRandomPassword(8);
         }
         System.out.println(randomPassword);

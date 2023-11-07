@@ -116,7 +116,13 @@ class PasswordValidationTest {
         assertFalse(actual);
     }
 
-
-
-
+    @Test
+    void isSafe_whenPasswordContainsAllRequirements_thenReturnTrue() {
+        // GIVEN
+        String password = "dgG/e456gsgfg";
+        // WHEN
+        boolean actual = PasswordValidation.isSafe(password);
+        // THEN
+        assertTrue(actual);
+    }
 }

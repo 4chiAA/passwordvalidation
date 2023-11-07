@@ -13,6 +13,7 @@ public class PasswordValidation {
         return password.length() > 7;
     }
 
+
     // Methode containNumbers prüft, ob das Passwort Ziffern enthält.
     // @param password
     // @return boolean true, wenn das Passwort mindestens 1 Ziffer
@@ -24,6 +25,7 @@ public class PasswordValidation {
         }
         return false;
     }
+
 
     // Methode lowerAndUpperCaseLetters stellt sicher, dass Groß- und auch Kleinbuchstaben verwendet werden.
     // @param password
@@ -48,8 +50,8 @@ public class PasswordValidation {
     // @return boolean true, wenn das Passwort nicht ein übliches Passwort ist
     public static boolean noCommonPassword(String password) {
         String[] commonPassword = {"Aa345678", "Password123", "12345678", "Password1", "12Password", "MyPassword"};
-        for (String i:commonPassword){
-            if (password.contains(i)){
+        for (String i : commonPassword) {
+            if (password.contains(i)) {
                 return false;
             }
         }
@@ -66,12 +68,18 @@ public class PasswordValidation {
         // Creating matcher for above pattern on our string
         Matcher m = p.matcher(password);
         // Now finding the matches imposing find() method
-        boolean res = m.find();
-
-        return res;
+        return m.find();
     }
 
 
+    // Methode isSafe prüft, ob alle Vorgaben die oben gemacht wurden zutreffen..
+    // @param password
+    // @return boolean true, wenn alle Vorgaben stimmen
+    public static boolean isSafe(String password) {
+        return passwordGreater7(password) && containNumbers(password) &&
+                lowerAndUpperCaseLetters(password) && noCommonPassword(password) &&
+                specialCharacter(password);
+    }
 
 }
 

@@ -35,5 +35,4 @@ public class RandomPassword {
         }
         return buildString.toString();
     }
-
 }
