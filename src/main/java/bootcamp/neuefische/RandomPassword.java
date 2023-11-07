@@ -35,4 +35,17 @@ public class RandomPassword {
         }
         return buildString.toString();
     }
+
+    public static void generatePassword() {
+
+        //Generiert ein zufälliges Passwort
+        String randomPassword = RandomPassword.getRandomPassword(8);
+
+        //Solange eine Methode false ausgibt, also die Vorgabe nicht erfüllt ist,
+        // wird für randomPassword ein neues Passswort kriert und erneut getestet
+        while (!PasswordValidation.isSafe(randomPassword)) {
+            randomPassword = RandomPassword.getRandomPassword(8);
+        }
+        System.out.println(randomPassword);
+    }
 }

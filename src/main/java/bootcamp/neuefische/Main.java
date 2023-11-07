@@ -5,15 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //Generiert ein zufälliges Passwort
-        String randomPassword = RandomPassword.getRandomPassword(8);
-
-        //Solange eine Methode false ausgibt, also die Vorgabe nicht erfüllt ist,
-        // wird für randomPassword ein neues Passswort kriert und erneut getestet
-        while (!PasswordValidation.isSafe(randomPassword)) {
-            randomPassword = RandomPassword.getRandomPassword(8);
-        }
-        System.out.println(randomPassword);
+        //Generiert ein zufälliges Passwort mit den Vorgaben
+        RandomPassword.generatePassword();
 
 
         //Eingabe und Überprüfung eines Passworts
@@ -34,8 +27,5 @@ public class Main {
         } else {
             System.out.println("Your password was created successfully!");
         }
-
-
-
     }
 }
